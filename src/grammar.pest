@@ -1,0 +1,9 @@
+WHITESPACE = _{ " " }
+equation = { SOI ~ (polynomial ~ "=" ~ polynomial) ~ EOI }
+polynomial = { sign? ~ term ~ (sign ~ term)* }
+sign = { "+" | "-" }
+term = { (coefficient ~ "*")? ~ variable | coefficient }
+coefficient = { number }
+variable = ${ ("X") ~ exponent? }
+exponent = ${ "^" ~ ASCII_DIGIT ~ (ASCII_DIGIT+)?}
+number = { ASCII_DIGIT+ ~ ("." ~ ASCII_DIGIT+)? }
